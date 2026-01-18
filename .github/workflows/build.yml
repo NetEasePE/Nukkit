@@ -1,19 +1,14 @@
-name: Deploy
+name: Build
 
 on:
   push:
-    branches:
-      - r21_u5
+  pull_request:
   workflow_dispatch:
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout Nukkit
@@ -25,6 +20,10 @@ jobs:
           distribution: temurin
           cache: maven
       - name: Build
-        run: mvn -B clean source:jar javadoc:jar deploy -P github
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn -B clean package
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v6
+        if: success()
+        with:
+          name: Nukkit
+          path: target/nukkit-1.0-SNAPSHOT.jar

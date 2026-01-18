@@ -72,6 +72,10 @@ public enum AuthInputAction {
      */
     RECEIVED_SERVER_DATA,
     /**
+     * @since v686
+     */
+    NETEASE, // netease modified
+    /**
      * @since v649
      */
     IN_CLIENT_PREDICTED_IN_VEHICLE,

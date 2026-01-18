@@ -2830,7 +2830,7 @@ public class Server {
 
         this.networkCompressionThreshold = this.getConfig("network.batch-threshold", 256);
         this.networkCompressionLevel = Math.max(Math.min(this.getConfig("network.compression-level", 5), 9), 0);
-        this.encryptionEnabled = this.getConfig("network.encryption", false);
+        this.encryptionEnabled = this.getConfig("network.encryption", true);
 
         this.autoTickRate = this.getConfig("level-settings.auto-tick-rate", true);
         this.autoTickRateLimit = this.getConfig("level-settings.auto-tick-rate-limit", 20);

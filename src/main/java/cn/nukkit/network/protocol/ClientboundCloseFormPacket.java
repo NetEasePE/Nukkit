@@ -13,6 +13,11 @@ public class ClientboundCloseFormPacket extends DataPacket {
     }
 
     @Override
+    public int getPacketId() {
+        return ProtocolInfo.CLIENTBOUND_CLOSE_FORM_PACKET;
+    }
+
+    @Override
     public void decode() {
     }
 
