@@ -81,6 +81,8 @@ public class BiomeDefinitionListPacket extends DataPacket {
             this.putLFloat(definition.getScale());
             this.putLInt(definition.getMapWaterColor().getRGB());
             this.putBoolean(definition.isRain());
+            this.putLInt(0); // netease modified: dimension
+            this.putString(""); // netease modified: vanilla
             this.putBoolean(false); // Optional Tags
             this.putBoolean(false); // Optional ChunkGenData
         }

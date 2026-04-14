@@ -151,6 +151,8 @@ public class AddEntityPacket extends DataPacket {
             .put(EntityBogged.NETWORK_ID, "minecraft:bogged")
             .put(145, "minecraft:ominous_item_spawner")
             .put(EntityCreaking.NETWORK_ID, "minecraft:creaking")
+            .put(147, "minecraft:happy_ghast")
+            .put(157, "minecraft:trader_llama")
             .build();
 
     @Override

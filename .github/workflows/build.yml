@@ -1,0 +1,29 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Nukkit
+        uses: actions/checkout@v6
+      - name: SetupJDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: 8
+          distribution: temurin
+          cache: maven
+      - name: Build
+        run: mvn -B clean package
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v7
+        if: success()
+        with:
+          name: Nukkit
+          path: target/nukkit-1.0-SNAPSHOT.jar

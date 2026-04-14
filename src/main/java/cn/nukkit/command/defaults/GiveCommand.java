@@ -38,12 +38,14 @@ public class GiveCommand extends VanillaCommand {
                 CommandParameter.newType("amount", true, CommandParamType.INT),
                 CommandParameter.newType("tags", true, CommandParamType.RAWTEXT)
         });
+/*      // make client assertion happy
         this.commandParameters.put("toPlayerByIdMeta", new CommandParameter[]{
                 CommandParameter.newType("player", CommandParamType.TARGET),
                 CommandParameter.newType("itemAndData", CommandParamType.STRING),
                 CommandParameter.newType("amount", true, CommandParamType.INT),
                 CommandParameter.newType("tags", true, CommandParamType.RAWTEXT)
         });
+*/
     }
 
     @Override

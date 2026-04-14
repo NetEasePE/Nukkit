@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - r21_u9
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout Nukkit
+        uses: actions/checkout@v6
+      - name: SetupJDK
+        uses: actions/setup-java@v5
+        with:
+          java-version: 8
+          distribution: temurin
+          cache: maven
+      - name: Build
+        run: mvn -B clean source:jar javadoc:jar deploy -P github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

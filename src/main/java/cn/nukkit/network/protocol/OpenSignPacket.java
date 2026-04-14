@@ -13,6 +13,11 @@ public class OpenSignPacket extends DataPacket {
     }
 
     @Override
+    public int getPacketId() {
+        return ProtocolInfo.OPEN_SIGN_PACKET;
+    }
+
+    @Override
     public void decode() {
         this.decodeUnsupported();
     }

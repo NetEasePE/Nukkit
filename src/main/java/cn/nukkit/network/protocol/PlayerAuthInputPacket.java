@@ -29,6 +29,7 @@ public class PlayerAuthInputPacket extends DataPacket {
     private AuthInteractionModel interactionModel;
     private long tick;
     private Vector3f delta;
+    public boolean cameraDeparted;
     private final Map<PlayerActionType, PlayerBlockActionData> blockActionData = new EnumMap<>(PlayerActionType.class);
     private long predictedVehicle;
     private Vector2f analogMoveVector;
@@ -66,6 +67,8 @@ public class PlayerAuthInputPacket extends DataPacket {
 
         this.tick = this.getUnsignedVarLong();
         this.delta = this.getVector3f();
+
+        this.cameraDeparted = this.getBoolean(); // netease modified
 
         if (this.inputData.contains(AuthInputAction.PERFORM_BLOCK_ACTIONS)) {
             int arraySize = this.getVarInt();

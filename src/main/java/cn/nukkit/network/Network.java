@@ -25,7 +25,7 @@ import java.util.Set;
 @SuppressWarnings("unchecked")
 public class Network {
 
-    private Class<? extends DataPacket>[] packetPool = new Class[256];
+    private Class<? extends DataPacket>[] packetPool = new Class[1024];
 
     private final Server server;
 
@@ -122,7 +122,11 @@ public class Network {
     }
 
     public void registerPacket(byte id, Class<? extends DataPacket> clazz) {
-        this.packetPool[id & 0xff] = clazz;
+        this.registerPacket(id & 0xff, clazz);
+    }
+
+    public void registerPacket(int id, Class<? extends DataPacket> clazz) {
+        this.packetPool[id & 0x3ff] = clazz;
     }
 
     public Server getServer() {
@@ -210,7 +214,7 @@ public class Network {
     }
 
     private void registerPackets() {
-        this.packetPool = new Class[256];
+        this.packetPool = new Class[1024];
 
         this.registerPacket(ProtocolInfo.BATCH_PACKET, BatchPacket.class);
 
