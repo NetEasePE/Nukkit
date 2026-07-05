@@ -95,5 +95,10 @@ public class TextPacket extends DataPacket {
         this.putString(this.xboxUserId);
         this.putString(this.platformChatId);
         this.putString(this.filteredMessage);
+
+        // netease modified
+        if (this.type == TYPE_CHAT || this.type == TYPE_POPUP) {
+            this.putString("");
+        }
     }
 }

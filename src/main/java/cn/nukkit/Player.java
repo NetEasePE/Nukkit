@@ -2815,6 +2815,7 @@ public class Player extends EntityHuman implements CommandSender, InventoryHolde
                 startGamePacket.lightningLevel = this.getLevel().getThunderTime();
             }
         }
+        startGamePacket.enchantmentSeed = ThreadLocalRandom.current().nextInt();
 
         this.forceDataPacket(startGamePacket, null);
 

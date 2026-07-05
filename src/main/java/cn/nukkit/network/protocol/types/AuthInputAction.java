@@ -68,6 +68,14 @@ public enum AuthInputAction {
      */
     STOP_FLYING,
     /**
+     * @since v686
+     */
+    USING_MOTION_CONTROLLER, // netease modified
+    /**
+     * @since v819
+     */
+    HAS_FORCE_INPUT_MOVE_VECTOR, // netease modified
+    /**
      * @since v622
      */
     RECEIVED_SERVER_DATA,

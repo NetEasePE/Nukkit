@@ -49,6 +49,11 @@ public class TrimDataPacket extends DataPacket {
     }
 
     @Override
+    public int getPacketId() {
+        return ProtocolInfo.TRIM_DATA_PACKET;
+    }
+
+    @Override
     public void decode() {
     }
 

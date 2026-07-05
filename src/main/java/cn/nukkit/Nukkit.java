@@ -87,7 +87,7 @@ public class Nukkit {
         }
 
         InternalLoggerFactory.setDefaultFactory(Log4J2LoggerFactory.INSTANCE);
-        ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.PARANOID);
+        ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.DISABLED);
 
         TITLE = options.has(titleSpec);
 

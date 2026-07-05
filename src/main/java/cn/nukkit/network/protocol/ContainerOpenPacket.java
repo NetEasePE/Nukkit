@@ -35,5 +35,7 @@ public class ContainerOpenPacket extends DataPacket {
         this.putByte((byte) this.type);
         this.putBlockVector3(this.x, this.y, this.z);
         this.putEntityUniqueId(this.entityId);
+
+        this.putBoolean(false); // netease modified: isIgnoreBlock
     }
 }

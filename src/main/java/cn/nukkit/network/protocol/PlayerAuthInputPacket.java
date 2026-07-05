@@ -67,6 +67,8 @@ public class PlayerAuthInputPacket extends DataPacket {
         this.tick = this.getUnsignedVarLong();
         this.delta = this.getVector3f();
 
+        this.getBoolean(); // netease modified: cameraDeparted
+
         if (this.inputData.contains(AuthInputAction.PERFORM_BLOCK_ACTIONS)) {
             int arraySize = this.getVarInt();
             if (arraySize > 256) throw new IllegalArgumentException("PlayerAuthInputPacket PERFORM_BLOCK_ACTIONS is too long: " + arraySize);
