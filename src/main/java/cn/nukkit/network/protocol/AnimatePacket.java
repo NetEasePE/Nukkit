@@ -38,6 +38,8 @@ public class AnimatePacket extends DataPacket {
         this.putEntityRuntimeId(this.eid);
         this.putLFloat(this.data);
         this.putBoolean(false); // Swing source (optional)
+
+        this.putEntityUniqueId(-1); // netease modified: attackId
     }
 
     @Override

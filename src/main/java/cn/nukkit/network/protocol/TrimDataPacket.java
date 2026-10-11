@@ -33,6 +33,7 @@ public class TrimDataPacket extends DataPacket {
         trimMaterials.add(new TrimMaterial("netherite", "§j", "minecraft:netherite_ingot"));
         trimMaterials.add(new TrimMaterial("quartz", "§h", "minecraft:quartz"));
         trimMaterials.add(new TrimMaterial("redstone", "§m", "minecraft:redstone"));
+        trimMaterials.add(new TrimMaterial("resin", "§v", "minecraft:resin_brick"));
 
         TrimDataPacket pk = new TrimDataPacket();
         pk.tryEncode();
@@ -46,6 +47,11 @@ public class TrimDataPacket extends DataPacket {
     @Override
     public byte pid() {
         return NETWORK_ID;
+    }
+
+    @Override
+    public int getPacketId() {
+        return ProtocolInfo.TRIM_DATA_PACKET;
     }
 
     @Override

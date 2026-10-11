@@ -139,5 +139,10 @@ public class TextPacket extends DataPacket {
         if (!this.filteredMessage.isEmpty()) {
             this.putString(this.filteredMessage);
         }
+
+        // netease modified
+        if (this.type == TYPE_CHAT || this.type == TYPE_POPUP) {
+            this.putUnsignedVarInt(0); // array size
+        }
     }
 }

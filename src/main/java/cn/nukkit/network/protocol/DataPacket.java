@@ -14,7 +14,12 @@ public abstract class DataPacket extends BinaryStream implements Cloneable {
 
     public volatile boolean isEncoded = false;
 
+    @Deprecated
     public abstract byte pid();
+
+    public int getPacketId() {
+        return pid() & 0xff;
+    }
 
     public abstract void decode();
 
@@ -31,12 +36,15 @@ public abstract class DataPacket extends BinaryStream implements Cloneable {
     public DataPacket reset() {
         super.reset();
 
+/*
         byte packetId = this.pid();
         if (packetId < 0 && packetId >= -56) { // Hack: (byte) 200+ --> (int) 300+
             this.putUnsignedVarInt(packetId + 356);
         } else {
             this.putUnsignedVarInt(packetId & 0xff);
         }
+*/
+        this.putUnsignedVarInt(this.getPacketId());
 
         return this;
     }

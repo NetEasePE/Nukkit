@@ -20,6 +20,11 @@ public class SetHudPacket extends DataPacket {
     }
 
     @Override
+    public int getPacketId() {
+        return ProtocolInfo.SET_HUD_PACKET;
+    }
+
+    @Override
     public void decode() {
         this.decodeUnsupported();
     }
