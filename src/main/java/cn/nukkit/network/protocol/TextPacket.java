@@ -53,6 +53,17 @@ public class TextPacket extends DataPacket {
                 this.type = (byte) getByte();
                 this.source = this.getString();
                 this.message = this.getString();
+
+                // netease modified
+                int paramCount = (int) this.getUnsignedVarInt();
+                if (paramCount > 12) {
+                    throw new IllegalArgumentException("Parameter List maxItems is 12");
+                }
+                this.parameters = new String[paramCount];
+                for (int i = 0; i < this.parameters.length; i++) {
+                    this.parameters[i] = this.getString();
+                }
+
                 break;
             case 2: // MessageAndParams
                 for (int i = 0; i < 3; i++) {
@@ -60,9 +71,9 @@ public class TextPacket extends DataPacket {
                 }
                 this.type = (byte) getByte();
                 this.message = this.getString();
-                int paramCount = (int) this.getUnsignedVarInt();
-                if (paramCount > 4) {
-                    throw new IllegalArgumentException("Parameter List maxItems is 4");
+                paramCount = (int) this.getUnsignedVarInt();
+                if (paramCount > 12) {
+                    throw new IllegalArgumentException("Parameter List maxItems is 12");
                 }
                 this.parameters = new String[paramCount];
                 for (int i = 0; i < this.parameters.length; i++) {
@@ -115,6 +126,13 @@ public class TextPacket extends DataPacket {
                 this.putByte(this.type);
                 this.putString(this.source);
                 this.putString(this.message);
+
+                // netease modified
+                this.putUnsignedVarInt(this.parameters.length);
+                for (String parameter : this.parameters) {
+                    this.putString(parameter);
+                }
+
                 break;
 
             case TYPE_TRANSLATION:
@@ -138,11 +156,6 @@ public class TextPacket extends DataPacket {
         this.putBoolean(!this.filteredMessage.isEmpty());
         if (!this.filteredMessage.isEmpty()) {
             this.putString(this.filteredMessage);
-        }
-
-        // netease modified
-        if (this.type == TYPE_CHAT || this.type == TYPE_POPUP) {
-            this.putUnsignedVarInt(0); // array size
         }
     }
 }

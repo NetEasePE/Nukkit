@@ -37,5 +37,8 @@ public class ContainerOpenPacket extends DataPacket {
         this.putEntityUniqueId(this.entityId);
 
         this.putBoolean(false); // netease modified: isIgnoreBlock
+        this.putString(""); // netease modified: screenName
+        this.putString(""); // netease modified: customDescription
+        this.putBoolean(true); // netease modified: isClosedDropItem
     }
 }

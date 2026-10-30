@@ -47,6 +47,9 @@ public class CommandRequestPacket extends DataPacket {
         Long playerId = this.getLLong();
         this.data = new CommandOriginData(type, uuid, requestId, playerId);
         this.internal = this.getBoolean();
+
+        this.getBoolean(); //netease modified: unlimit
+
         this.getString(); // version
     }
 
